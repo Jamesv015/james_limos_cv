@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>James Limos | CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.jpg" />
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    
+    body { 
+      font-family: 'Inter', system-ui, -apple-system, sans-serif; 
+      background: #000000; 
+      color: #e5e5e5; 
+      min-height: 100dvh; 
+      display: grid; 
+      place-items: center; 
+      padding: 20px; 
+      position: relative; 
+      overflow-x: hidden; 
+    }
+    
+    /* AI Grid Background Layer 1 - Large Grid */
+    body::before { 
+      content: ''; 
+      position: fixed; 
+      top: -50%; 
+      left: -50%; 
+      width: 200%; 
+      height: 200%; 
+      background-image: 
+        linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none; 
+      z-index: 0; 
+      animation: gridScroll 20s linear infinite;
+    }
+    
+    /* AI Grid Background Layer 2 - Small Grid */
+    body::after { 
+      content: ''; 
+      position: fixed; 
+      top: -50%; 
+      left: -50%; 
+      width: 200%; 
+      height: 200%; 
+      background-image: 
+        linear-gradient(rgba(0, 200, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 200, 255, 0.02) 1px, transparent 1px);
+      background-size: 20px 20px;
+      pointer-events: none; 
+      z-index: 0; 
+      animation: gridScroll 30s linear infinite reverse;
+    }
+    
+    @keyframes gridScroll {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(80px, 80px); }
+    }
+    
+    /* Animated Particles */
+    .ai-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(0, 255, 255, 0.6);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+      animation: float linear infinite;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) translateX(100px);
+        opacity: 0;
+      }
+    }
+    
+    /* Scanning Lines Effect */
+    .scan-lines {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      background: linear-gradient(
+        transparent 0%,
+        rgba(0, 255, 255, 0.05) 50%,
+        transparent 100%
+      );
+      background-size: 100% 200%;
+      animation: scan 8s linear infinite;
+    }
+    
+    @keyframes scan {
+      0% { background-position: 0 -200%; }
+      100% { background-position: 0 200%; }
+    }
+    
+    /* Glowing Orbs */
+    .glow-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+      animation: orbFloat 15s ease-in-out infinite;
+    }
+    
+    .glow-orb-1 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0, 255, 255, 0.3), transparent);
+      top: 10%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+    
+    .glow-orb-2 {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(0, 150, 255, 0.2), transparent);
+      bottom: 20%;
+      right: 15%;
+      animation-delay: 3s;
+    }
+    
+    .glow-orb-3 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(0, 200, 255, 0.25), transparent);
+      top: 50%;
+      right: 5%;
+      animation-delay: 6s;
+    }
+    
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -30px) scale(1.1); }
+      50% { transform: translate(-20px, 20px) scale(0.9); }
+      75% { transform: translate(20px, 30px) scale(1.05); }
+    }
+    
+    .container { 
+      width: 100%; 
+      max-width: 920px; 
+      background: linear-gradient(145deg, rgba(255,255,255,0.98) 0%, rgba(248,248,248,0.95) 100%);
+      backdrop-filter: blur(10px);
+      border-radius: 24px; 
+      padding: 3rem 2.5rem; 
+      box-shadow: 
+        0 25px 80px rgba(0, 255, 255, 0.15), 
+        0 0 0 1px rgba(0, 255, 255, 0.2), 
+        inset 0 1px 0 rgba(255,255,255,0.9),
+        0 0 100px rgba(0, 200, 255, 0.1);
+      text-align: center; 
+      margin: 0 auto; 
+      position: relative; 
+      z-index: 1; 
+      animation: containerGlow 4s ease-in-out infinite;
+    }
+    
+    @keyframes containerGlow {
+      0%, 100% { box-shadow: 0 25px 80px rgba(0, 255, 255, 0.15), 0 0 0 1px rgba(0, 255, 255, 0.2), inset 0 1px 0 rgba(255,255,255,0.9), 0 0 100px rgba(0, 200, 255, 0.1); }
+      50% { box-shadow: 0 25px 80px rgba(0, 255, 255, 0.25), 0 0 0 1px rgba(0, 255, 255, 0.4), inset 0 1px 0 rgba(255,255,255,0.9), 0 0 120px rgba(0, 200, 255, 0.2); }
+    }
+    
+    .header { margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 2px solid #e0e0e0; position: relative; }
+    .header::after { content: ''; position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%); width: 80px; height: 2px; background: linear-gradient(90deg, #00ffff 0%, #0099ff 100%); box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); }
+    
+    h1 { 
+      font-size: clamp(2.2rem, 6vw, 3rem); 
+      font-weight: 800; 
+      margin-bottom: 0.5rem; 
+      background: linear-gradient(135deg, #000000 0%, #00ffff 50%, #0099ff 100%); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      background-clip: text; 
+      letter-spacing: -0.5px; 
+      animation: titleShimmer 3s ease-in-out infinite;
+      background-size: 200% 100%;
+    }
+    
+    @keyframes titleShimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    .subtitle { font-size: 1.1rem; color: #666; font-weight: 500; margin-top: 0.5rem; }
+    
+    .resume-frame { 
+      border-radius: 16px; 
+      overflow: hidden; 
+      background: #fff; 
+      box-shadow: 
+        0 20px 60px rgba(0, 255, 255, 0.1), 
+        0 0 0 1px rgba(0, 255, 255, 0.2), 
+        inset 0 1px 0 rgba(255,255,255,1); 
+      margin-bottom: 2rem; 
+      border: 3px solid black; 
+      max-width: 100%; 
+      margin-left: auto; 
+      margin-right: auto; 
+      position: relative; 
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+    }
+  
+    
+    #resume { width: 100%; height: auto; filter: blur(20px) grayscale(100%); transition: filter 0.8s cubic-bezier(0.4, 0, 0.2, 1); display: block; }
+    #resume.revealed { filter: blur(0) grayscale(0%); }
+    
+    .btn-group { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin: 2rem 0; }
+    
+    .action-btn { 
+      background: linear-gradient(135deg, #000000 0%, #003333 100%); 
+      color: #00ffff; 
+      border: 2px solid #00ffff; 
+      padding: 1rem 2.5rem; 
+      font-size: 1.05rem; 
+      font-weight: 600; 
+      border-radius: 50px; 
+      cursor: pointer; 
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+      text-decoration: none; 
+      display: inline-block; 
+      position: relative; 
+      overflow: hidden; 
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+    
+    .action-btn::before { 
+      content: ''; 
+      position: absolute; 
+      top: 50%; 
+      left: 50%; 
+      width: 0; 
+      height: 0; 
+      border-radius: 50%; 
+      transform: translate(-50%, -50%); 
+      transition: width 0.6s, height 0.6s; 
+    }
+    
+    .action-btn:hover::before { width: 300px; height: 300px; }
+    .action-btn:hover { 
+      background: linear-gradient(135deg, #001a1a 0%, #004444 100%); 
+      transform: translateY(-3px); 
+    }
+    
+    .action-btn.secondary { 
+      background: rgba(255, 255, 255, 0.95); 
+      color: #000; 
+      border: 2px solid #00ffff; 
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    }
+    
+    .action-btn.secondary:hover { 
+      background: rgba(240, 255, 255, 0.95); 
+      color: #000; 
+      box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3), 0 0 40px rgba(0, 255, 255, 0.2);
+    }
+    
+    .hidden { display: none !important; }
+    
+    .contact { margin-top: 3rem; padding-top: 2.5rem; border-top: 2px solid #e0e0e0; position: relative; }
+    .contact::before { content: ''; position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 80px; height: 2px; background: linear-gradient(90deg, #00ffff 0%, #0099ff 100%); box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); }
+    
+    .contact-title { font-size: 1.4rem; color: #333; margin-bottom: 1.5rem; font-weight: 700; letter-spacing: -0.3px; }
+    
+    .social-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
+    
+    .social-btn { 
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center; 
+      width: 56px; 
+      height: 56px; 
+      background: #fff; 
+      color: #000; 
+      border: 2px solid #00ffff; 
+      border-radius: 50%; 
+      cursor: pointer; 
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+      position: relative; 
+      overflow: hidden; 
+      text-decoration: none; 
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+    }
+    
+    .social-btn::before { 
+      content: ''; 
+      position: absolute; 
+      top: 0; 
+      left: -100%; 
+      width: 100%; 
+      height: 100%; 
+      background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent); 
+      transition: left 0.5s; 
+    }
+    
+    .social-btn:hover::before { left: 100%; }
+    .social-btn:hover { 
+      transform: translateY(-3px) scale(1.05); 
+      box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3), 0 0 20px rgba(0, 255, 255, 0.2); 
+    }
+    
+    .social-btn.gmail:hover { background: #ea4335; color: #fff; border-color: #ea4335; box-shadow: 0 10px 30px rgba(234, 67, 53, 0.4), 0 0 20px rgba(234, 67, 53, 0.3); }
+    .social-btn.facebook:hover { background: #1877f2; color: #fff; border-color: #1877f2; box-shadow: 0 10px 30px rgba(24, 119, 242, 0.4), 0 0 20px rgba(24, 119, 242, 0.3); }
+    .social-btn.linkedin:hover { background: #0077b5; color: #fff; border-color: #0077b5; box-shadow: 0 10px 30px rgba(0, 119, 181, 0.4), 0 0 20px rgba(0, 119, 181, 0.3); }
+    
+    .social-icon { width: 24px; height: 24px; fill: currentColor; stroke: none; }
+    .email-btn { display: none; }
+    
+    #backdrop { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(12px); z-index: 999; animation: fadeIn 0.3s ease; }
+    
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    
+    #spamWarning { 
+      display: none; 
+      position: fixed; 
+      top: 50%; 
+      left: 50%; 
+      transform: translate(-50%, -50%); 
+      background: #fff; 
+      border: 3px solid #00ffff; 
+      border-radius: 20px; 
+      padding: 40px 44px; 
+      max-width: 380px; 
+      width: 90%; 
+      text-align: center; 
+      box-shadow: 0 25px 80px rgba(0, 255, 255, 0.4), 0 0 60px rgba(0, 255, 255, 0.3); 
+      z-index: 1000; 
+      animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+    }
+    
+    @keyframes slideUp { from { opacity: 0; transform: translate(-50%, -40%); } to { opacity: 1; transform: translate(-50%, -50%); } }
+    
+    #spamWarning .icon { font-size: 48px; margin-bottom: 16px; }
+    #spamWarning h3 { color: #000; font-size: 1.5rem; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.5px; }
+    #spamWarning p { color: #333; line-height: 1.6; margin-bottom: 12px; font-size: 1.05rem; font-weight: 500; }
+    #spamWarning button { 
+      background: linear-gradient(135deg, #000000 0%, #003333 100%); 
+      color: #00ffff; 
+      border: 2px solid #00ffff; 
+      padding: 14px 48px; 
+      border-radius: 50px; 
+      font-weight: 700; 
+      font-size: 1.05rem; 
+      cursor: pointer; 
+      margin-top: 12px; 
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+    
+    #spamWarning button:hover { 
+      background: linear-gradient(135deg, #001a1a 0%, #004444 100%); 
+      transform: translateY(-2px); 
+      box-shadow: 0 8px 20px rgba(0, 255, 255, 0.4), 0 0 30px rgba(0, 255, 255, 0.2); 
+    }
+    
+    @media (max-width: 640px) { 
+      .container { padding: 2rem 1.5rem; } 
+      .btn-group { flex-direction: column; } 
+      .action-btn { width: 100%; } 
+      .social-group { gap: 12px; } 
+      .social-btn { width: 48px; height: 48px; } 
+      .social-icon { width: 20px; height: 20px; }
+      .resume-frame { max-height: 60vh; overflow-y: auto; }
+    }
+  </style>
+</head>
+<body>
+  <!-- AI Particle System -->
+  <div class="ai-particles">
+    <div class="particle" style="left: 10%; animation-duration: 15s; animation-delay: 0s;"></div>
+    <div class="particle" style="left: 20%; animation-duration: 20s; animation-delay: 2s;"></div>
+    <div class="particle" style="left: 30%; animation-duration: 18s; animation-delay: 4s;"></div>
+    <div class="particle" style="left: 40%; animation-duration: 22s; animation-delay: 1s;"></div>
+    <div class="particle" style="left: 50%; animation-duration: 16s; animation-delay: 3s;"></div>
+    <div class="particle" style="left: 60%; animation-duration: 19s; animation-delay: 5s;"></div>
+    <div class="particle" style="left: 70%; animation-duration: 21s; animation-delay: 2s;"></div>
+    <div class="particle" style="left: 80%; animation-duration: 17s; animation-delay: 4s;"></div>
+    <div class="particle" style="left: 90%; animation-duration: 23s; animation-delay: 1s;"></div>
+  </div>
+  
+  <!-- Scanning Lines -->
+  <div class="scan-lines"></div>
+  
+  <!-- Glowing Orbs -->
+  <div class="glow-orb glow-orb-1"></div>
+  <div class="glow-orb glow-orb-2"></div>
+  <div class="glow-orb glow-orb-3"></div>
+  
+  <div class="container">
+    <div class="header">
+    <div class="resume-frame">
+      <img id="resume" src="resume.png" alt="Resume">
+    </div>
+    <div class="btn-group">
+      <button id="revealBtn" class="action-btn">View Resume</button>
+      <button id="hideBtn" class="action-btn secondary hidden">Hide Resume</button>
+    </div>
+ <div class="contact">
+  <div class="contact-title">Contact Me</div>
+
+  <div class="social-group">
+
+<!-- GMAIL -->
+<button id="gmailBtn" class="social-btn gmail" title="Email James">
+  <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+  </svg>
+</button>
+
+    <!-- FACEBOOK -->
+    <a href="https://www.facebook.com/profile.php?id=61584464103937"
+       class="social-btn facebook"
+       target="_blank"
+       rel="noopener"
+       title="Facebook">
+
+      <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+      </svg>
+
+    </a>
+
+    <!-- LINKEDIN -->
+    <a href="https://www.linkedin.com/in/james-vincent-limos-9235893ab/"
+       class="social-btn linkedin"
+       target="_blank"
+       rel="noopener"
+       title="LinkedIn">
+
+      <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/>
+      </svg>
+
+    </a>
+
+  </div>
+
+
+  <!-- EMAIL BUTTON -->
+  <button id="emailBtn" class="email-btn">
+
+    <svg class="envelope"
+         xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 24 24"
+         fill="none"
+         stroke="currentColor"
+         stroke-width="2"
+         stroke-linecap="round"
+         stroke-linejoin="round">
+
+      <rect x="3" y="5" width="18" height="14" rx="2"/>
+      <polyline points="3,7 12,13 21,7"/>
+
+    </svg>
+
+    jameslimos1512@gmail.com
+
+  </button>
+
+</div>
+
+  </div>
+  <div id="backdrop"></div>
+  <div id="spamWarning">
+    <div class="icon">⚠️</div>
+    <h3>Spam Protection</h3>
+    <p>You have reached the daily limit (3 emails per day).</p>
+    <p>Please do not spam my inbox. Thank you!</p>
+    <button onclick="hideWarning()">OK</button>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    const EMAILJS_PUBLIC_KEY = "C76n62tHz3HY64FJC";
+    const EMAILJS_SERVICE_ID = "service_s30vws9";
+    const EMAILJS_TEMPLATE_ID = "template_0g3to32";
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+    const revealBtn = document.getElementById('revealBtn');
+    const hideBtn = document.getElementById('hideBtn');
+    const resume = document.getElementById('resume');
+    const emailBtn = document.getElementById('emailBtn');
+    const gmailBtn = document.getElementById('gmailBtn');
+    const warning = document.getElementById('spamWarning');
+    const backdrop = document.getElementById('backdrop');
+    function revealResume() {
+      resume.classList.add('revealed');
+      revealBtn.classList.add('hidden');
+      hideBtn.classList.remove('hidden');
+    }
+    function hideResume() {
+      resume.classList.remove('revealed');
+      revealBtn.classList.remove('hidden');
+      hideBtn.classList.add('hidden');
+    }
+    function showWarning() {
+      warning.style.display = 'block';
+      backdrop.style.display = 'block';
+      sendSpamAlert();
+    }
+    function hideWarning() {
+      warning.style.display = 'none';
+      backdrop.style.display = 'none';
+    }
+    async function sendSpamAlert() {
+      try {
+        const res = await fetch('https://ipapi.co/json/');
+        const ipData = await res.json();
+        const params = {
+          time: new Date().toLocaleString('en-PH'),
+          ip: ipData.ip || 'Unknown',
+          city: ipData.city || 'Unknown',
+          country: ipData.country_name || 'Unknown',
+          user_agent: navigator.userAgent,
+          name: 'Anonymous Visitor',
+          email: 'spam-detected@resume-site.com'
+        };
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
+      } catch {}
+    }
+    function handleEmailClick() {
+      const now = Date.now();
+      let data = JSON.parse(localStorage.getItem('emailClicks')) || { count: 0, timestamp: now };
+      if (now - data.timestamp > 86400000) data = { count: 0, timestamp: now };
+      if (data.count >= 3) {
+        showWarning();
+        return;
+      }
+      data.count++;
+      data.timestamp = now;
+      localStorage.setItem('emailClicks', JSON.stringify(data));
+      window.open('https://mail.google.com/mail/?view=cm&fs=1&to=jameslimos1512@gmail.com&su=Job%20Opportunity&body=Dear%20James%2C%0A%0A', '_blank');
+    }
+    revealBtn.onclick = revealResume;
+    hideBtn.onclick = hideResume;
+    gmailBtn.onclick = handleEmailClick;
+    emailBtn.onclick = handleEmailClick;
+  </script>
+</body>
+</html>
